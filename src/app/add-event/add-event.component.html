@@ -1,0 +1,59 @@
+<form #f="ngForm" style="margin-left: 5%;margin-right: 5%;" (ngSubmit)="onsubmit(f,startdate,enddate)" >
+  <div *ngIf="error!=''" style="color: #dc3545;">
+    {{error}}
+  </div>
+    <div class="input-group mb-3 mt-3">
+      <div class="input-group-prepend">
+      <span class="input-group-text">Title</span>
+    </div>
+      <input name="title" #title="ngModel" type="text" class="form-control" aria-describedby="emailHelp" minlength="10" maxlength="50" [ngClass]="{'is-invalid':(title.errors)}" placeholder="Title" [(ngModel)]="event.title" ngModel required>
+      <div class="invalid-feedback" *ngIf="title.errors?.['required']">
+        This Field is Required
+      </div>
+      <div class="invalid-feedback" *ngIf="title.errors?.['minlength']">
+        Minimum Length is 10
+      </div>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" style="height: 100%;">Description</span>
+        </div>
+        <textarea #description="ngModel" [(ngModel)]="event.description" name="description" class="form-control" 
+        [ngClass]="{'is-invalid': (description.errors)}" aria-label="Description" placeholder="Description" minlength="20" ngModel  required maxlength="105"></textarea>
+        <div class="invalid-feedback" *ngIf="description.errors?.['required']">
+          This Field is Required
+        </div>
+        <div class="invalid-feedback" *ngIf="description.errors?.['minlength']">
+          Minimum Length is 20
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">Start Date</span>
+        </div>
+        <input [ngClass]="{'is-invalid': (startdate.errors)}" [(ngModel)]="event.startdate" name="startdate" #startdate="ngModel"  type="text" class="form-control" aria-label="Default" placeholder="dd-mm-yyyy" aria-describedby="inputGroup-sizing-default" pattern="^(0[1-9]|[12][0-9]|3[01])\-(0[1-9]|1[012])\-\d{4}$" ngModel required>
+        <div class="invalid-feedback" *ngIf="startdate.errors?.['pattern']">
+          Please write Start Date in dd-mm-yyyy Format
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">End Date (dd-mm-yy)</span>
+        </div>
+        <input #enddate="ngModel" [(ngModel)]="event.enddate" placeholder="dd-mm-yyyy" name="enddate" [ngClass]="{'is-invalid': (enddate.errors)}" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" pattern="^(0[1-9]|[12][0-9]|3[01])\-(0[1-9]|1[012])\-\d{4}$" ngModel required>
+        <div class="invalid-feedback" *ngIf="enddate.errors?.['pattern']">
+          Please write End Date in dd-mm-yyyy Format
+        </div>
+
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">Ticket Ordered</span>
+        </div>
+        <input [ngClass]="{'is-invalid':(ticketOrdered.errors)}" name="ticketOrdered" type="number" [(ngModel)]="event.ticketOrdered" #ticketOrdered="ngModel" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" ngModel required>
+        <div class="invalid-feedback" *ngIf="ticketOrdered.errors?.['required']">
+          This Field is Required
+        </div>
+      </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>

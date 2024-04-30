@@ -1,0 +1,11 @@
+<div class="card mx-1" style="width: 18rem;height:325px;overflow: hidden;">
+    <div class="card-body">
+      <h5 class="card-title">{{title}}</h5>
+      <p class="card-text" style="height:80px;overflow: hidden;">{{desc}}</p>
+      <p class="card-text"><b>Start Date : </b>{{startdate}}</p>
+      <p class="card-text"><b>End Date : </b>{{enddate}}</p>
+      <p class="card-text"><b>Tickets Ordered : </b>{{ticketOrdered}}</p>
+      <a (click)="edit()" class="btn btn-secondary">Edit</a>
+      <a *ngIf="ticketOrdered<=0" (click)="cancel()" style="margin-left:4px;" class="btn btn-danger">Cancel Event</a>
+    </div>
+  </div>

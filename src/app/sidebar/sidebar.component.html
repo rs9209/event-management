@@ -1,0 +1,27 @@
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;height:100%;">
+    
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a (click)="all()" [ngClass]=" {'active' : default == 'all'}" class="nav-link text-white" aria-current="page">
+          All Events
+        </a>
+      </li>
+      <li class="nav-item">
+        <a (click)="ongoing()" [ngClass]=" {'active' : default == 'ongoing'}" class="nav-link text-white" aria-current="page">
+          Ongoing Events
+        </a>
+      </li>
+      <li>
+        <a (click)="upcoming()" class="nav-link text-white" [ngClass]=" {'active' : default == 'upcoming'}">
+          Upcoming Events
+        </a>
+      </li>
+      <li>
+        <a (click)="past()" class="nav-link text-white" [ngClass]=" {'active' : default == 'past'}">
+          Past Events
+        </a>
+      </li>
+             
+    </ul>
+    <hr>
+  </div>
